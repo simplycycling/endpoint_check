@@ -19,3 +19,14 @@ done < endpoints.txt
 if [ ${#failed_connections[@]} -gt 0 ]; then
   echo "Failed connections: ${failed_connections[@]}"
 fi
+
+# Exit with appropriate status code
+if [ ${#failed_connections[@]} -eq 0 ]
+then
+  exit 0
+elif [ ${#failed_connections[@]} -eq 1 ]
+then
+  exit 1
+else
+  exit 2
+fi
